@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habitaciones</title>
+    <link rel="stylesheet" th:href="@{/css/toast.min.css}" />
+    <!-- <link rel="stylesheet" th:href="@{/css/datatables.min.css}" /> -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link rel="stylesheet"  th:href="@{/css/style.css}" />
+    <style>
+        li {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body style="background-color: #c1c1c1">
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="row" style="margin-left: 10%;margin-right: 10%;">
+
+    <div class="col-md-6"><h5 >LISTA DE HABITACIONES</h5></div>
+    <div class="col-md-6">
+        <a class="btn-agregar float-right text-end " th:href="@{/rooms/create}">
+            <span class="icon-agregar">
+                <ion-icon name="home" width="60" height="40">
+                    <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="90" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                </ion-icon>
+            </span>
+            <span class="text-agregar">Agregar</span>
+        </a>
+
+    </div>
+
+</div>
+
+
+<div>
+    <div class=" row" style="margin: 5%;">
+        <div class="plan-card" style="margin-right: 2%; margin-left: 2%;margin-top: 2%;" th:each="roomObj , iter: ${listRooms}">
+            <h2 style="color:#fff;">[[${roomObj.name}]]<span >[[${roomObj.category.name}]]</span></h2>
+            <div class="etiquet-price">
+                <p>[[${roomObj.price}]]</p>
+                <div></div>
+            </div>
+            <div class="benefits-list" >
+                 <ul>
+                 <li><ion-icon name="checkbox-outline"></ion-icon><span>[[${roomObj.description}]]</span></li>
+                     <li><ion-icon name="checkbox-outline"></ion-icon><span>[[${roomObj.size.name}]]</span></li>
+                 </ul>
+             </div>
+            <div  class="button-get-plan " style="bottom: initial">
+                <a th:href="@{/rooms/details/{id} (id=${roomObj.id})}" class="btn-see">
+                    <ion-icon name="flame"></ion-icon>
+                    <span>Reservar</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="pt-2" style="margin-top: 10px;">
+        <nav th:if="${listRooms.totalPages > 0}" aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${listRooms.number == 0 ? 'disabled' : ''}">
+                    <a th:href="@{/rooms/list(page=${listRooms.number - 1})}" class="page-link">Anterior</a>
+                </li>
+
+                <li class="page-item" th:classappend="${i eq listRooms.number + 1} ? 'active'"
+                    th:each="i : ${#numbers.sequence( 1, listRooms.totalPages, 1)}">
+                    <a class="page-link" th:href="@{/rooms/list?page={tmpPag} (tmpPag=${i-1}) }" th:text="${i}"
+                       th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+                </li>
+                <li class="page-item"
+                    th:classappend="${listRooms.number == (listRooms.totalPages - 1) ? 'disabled' : ''}">
+                    <a th:href="@{/rooms/list(page=${listRooms.number + 1})}" class="page-link">Siguiente</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+
+
+
+
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script th:src="@{/js/toast.min.js}"></script>
+<!-- <script th:src="@{/js/datatables.min.js}"></script> -->
+<script th:src="@{/js/city.js}"></script>
+
+<script th:if="${msg_success != null}">
+    new Toast({
+        message: "[[${msg_success}]]",
+        type: "success",
+    });
+</script>
+<script th:if="${msg_error != null}">
+    new Toast({
+        message: "[[${msg_error}]]",
+        type: "danger",
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>

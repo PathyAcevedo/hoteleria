@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usuarios</title>
+  <link rel="stylesheet" th:href="@{/css/toast.min.css}" />
+  <!-- <link rel="stylesheet" th:href="@{/css/datatables.min.css}" /> -->
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <link rel="stylesheet"  th:href="@{/css/style.css}" />
+  <style>
+    li {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body style="background-color: #c1c1c1">
+  <div th:insert="~{fragments/header :: header}"></div>
+
+  <div class="row" style="margin-left: 10%;margin-right: 10%;">
+
+      <div class="col-md-6"><h5 >LISTA DE EMPLEADOS</h5></div>
+      <div class="col-md-6">
+
+      <a class="btn-agregar text-end float-right" th:href="@{/users/create}">
+            <span class="icon-agregar">
+                <ion-icon name="person-add" width="60" height="40">
+                    <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="90" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                </ion-icon>
+            </span>
+          <span class="text-agregar">Agregar</span>
+      </a>
+      </div>
+  </div>
+
+
+  <div  >
+
+      <div class=" row" style="margin-right: 10%; margin-left: 10%;margin-top: 3%;">
+
+
+              <div class="card-user pt-2" style="margin: 3px;margin-top: 4%" th:each="userObj , iter: ${listUsers}">
+
+                  <div class="card-details-user" >
+                      <center>
+                          <div class="card-avatar"></div>
+
+                          <p class="text-title-user">[[${userObj.username}]]</p>
+
+                          <span><ion-icon name="person"/></span>
+                          <span class="text-body-user">[[${userObj.name}]] [[${userObj.lastName}]] [[${userObj.surname}]]</span><br>
+                          <span> <ion-icon name="mail"/></span>
+                          <span class="text-body-user">[[${userObj.email}]]</span><br>
+                          <span> <ion-icon name="call"/></span>
+                          <span class="text-body-user">[[${userObj.phone}]]</span>
+                      </center>
+
+                  </div>
+                      <div th:switch="${userObj.enabled}" >
+                          <div th:case="'1'">
+                              <a class="card-button-user text-center"  th:href="@{/users/disable/{id} (id=${userObj.id})}">Desabilitar</a>
+                          </div>
+                          <div th:case="'0'">
+                              <a class="card-button-user text-center" th:href="@{/users/disable/{id} (id=${userObj.id})}">Habilitar</a>
+                          </div>
+                      </div>
+              </div>
+
+      </div>
+
+
+
+
+      <div class="pt-2" style="margin-top: 10px;">
+          <nav th:if="${listUsers.totalPages > 0}" aria-label="Page navigation example ">
+              <ul class="pagination justify-content-center">
+                  <li class="page-item" th:classappend="${listUsers.number == 0 ? 'disabled' : ''}">
+                      <a th:href="@{/users/list(page=${listUsers.number - 1})}" class="page-link">Anterior</a>
+                  </li>
+
+                  <li class="page-item" th:classappend="${i eq listUsers.number + 1} ? 'active'"
+                      th:each="i : ${#numbers.sequence( 1, listUsers.totalPages, 1)}">
+                      <a class="page-link" th:href="@{/users/list?page={tmpPag} (tmpPag=${i-1}) }" th:text="${i}"
+                         th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+                  </li>
+                  <li class="page-item"
+                      th:classappend="${listUsers.number == (listUsers.totalPages - 1) ? 'disabled' : ''}">
+                      <a th:href="@{/users/list(page=${listUsers.number + 1})}" class="page-link">Siguiente</a>
+                  </li>
+              </ul>
+          </nav>
+
+      </div>
+
+
+  </div>
+
+
+
+
+
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script th:src="@{/js/toast.min.js}"></script>
+  <!-- <script th:src="@{/js/datatables.min.js}"></script> -->
+  <script th:src="@{/js/city.js}"></script>
+
+  <script th:if="${msg_success != null}">
+    new Toast({
+      message: "[[${msg_success}]]",
+      type: "success",
+    });
+  </script>
+  <script th:if="${msg_error != null}">
+    new Toast({
+      message: "[[${msg_error}]]",
+      type: "danger",
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>

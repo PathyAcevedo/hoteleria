@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark mb-4" th:fragment="header" style="background-color: #394062;"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/}" style="color: #ffeba7">MAHO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!--INICIO ADMIN-->
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/rooms/list}" sec:authorize="hasAnyAuthority('ROL_ADMINISTRADOR')" style="color: #ffeba7">Habitaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/users/list}" sec:authorize="hasAnyAuthority('ROL_ADMINISTRADOR')" style="color: #ffeba7">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/services/list}" sec:authorize="hasAnyAuthority('ROL_ADMINISTRADOR')" style="color: #ffeba7">Servicios a Habitación</a>
+        </li>
+        <!--FIN ADMIN-->
+
+        <!--INICIO EMPLEADO-->
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/client/list}" sec:authorize="hasAnyAuthority('ROL_EMPLEADO')" style="color: #ffeba7">Inicidencias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/client/list/unpaid}" sec:authorize="hasAnyAuthority('ROL_EMPLEADO')" style="color: #ffeba7">Pagos</a>
+        </li>
+        <!--FIN EMPLEADO-->
+
+      </ul>
+    </div>
+    <div class="text-end" sec:authorize="isAuthenticated()">
+      <a class="nav-link button-save " th:href="@{/logout}" >Salir</a>
+    </div>
+
+    <div class="text-end" sec:authorize="isAnonymous()">
+      <a class="nav-link navbar navbar-expand-lg navbar-light bg-light button-save" th:href="@{/login}">Iniciar Sesión</a>
+    </div>
+
+
+
+  </div>
+</nav>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es"  xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--Toast-->
+    <link rel="stylesheet" th:href="@{/css/toast.min.css}" />
+
+    <link rel="stylesheet"  th:href="@{/css/style.css}" />
+
+
+</head>
+
+<body style="background-color: #c1c1c1;">
+
+
+<center style="margin-top: 10%">
+
+            <div class="card-login">
+                <h4 class="title-card-login">Ingresar a mi cuenta</h4>
+                <form th:action="@{/login}" method="post">
+                    <div class="field-card-login">
+                        <ion-icon name="person" class="input-icon-card-login"></ion-icon>
+                       <input autocomplete="off" placeholder="Usuario" class="input-field-card-login" name="username" id="username" >
+                    </div>
+
+                    <div class="field-card-login" >
+                        <ion-icon name="key" class="input-icon-card-login"></ion-icon>
+                        <input autocomplete="off" placeholder="Contraseña" class="input-field-card-login"  id="password"
+                               name="password" type="password">
+
+
+                            <button class="btn-see" type="button" id="seePasswordButton"
+                                    onclick="mostrarContrasena()">
+                                <ion-icon name="eye"></ion-icon>
+                            </button>
+
+                    </div>
+                    <button class="btn-card-login" id="registrar" type="submit" onclick="validarContrasena()"  >
+                        Entrar</button>
+
+                    <a th:href="@{/forgotPassword}" class="btn-link">Olvidaste tu contraseña?</a>
+                </form>
+            </div>
+
+
+</center>
+<div th:insert="~{fragments/footer :: footer}"></div>
+
+<!--Ionicons-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!--Toast-->
+<script th:src="@{/js/toast.min.js}"></script>
+
+<script th:if="${msg_success != null}">
+    new Toast({
+        message: '[[${msg_success}]]',
+        type: 'success'
+    });
+</script>
+
+<script th:if="${msg_error != null}">
+    new Toast({
+        message: '[[${msg_error}]]',
+        type: 'danger'
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- Mostrar y ocultar contraseña input-->
+<script>
+    function mostrarContrasena() {
+        var pwd = $(".pwd");
+        var tipo = document.getElementById("password");
+        if (tipo.type == "password") {
+            tipo.type = "text";
+            document.getElementById('seePasswordButton').innerHTML = "<ion-icon name='eye-off'></ion-icon>";
+        } else {
+            tipo.type = "password";
+            document.getElementById('seePasswordButton').innerHTML = "<ion-icon name='eye'></ion-icon>";
+        }
+    }
+</script>
+<style>
+    .btn-login {
+        background-color:#4169E1  !important;
+        color: rgb(255, 255, 255) !important;
+    }
+    .btn-login:hover {
+        background-color:#6495ED !important;
+        color: rgb(255, 255, 255) !important;
+    }
+    .help-text {
+        color: #ffffff !important;
+    }
+    .help-text:hover {
+        color: #ffffff !important;
+    }
+</style>
+</body>
+
+</html>
