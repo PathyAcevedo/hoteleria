@@ -35,6 +35,9 @@ public class Rooms {
     @ManyToOne
     @JoinColumn(name = "category", nullable = false)
     private Category category;
+
+    @Column(name = "service", nullable = false, length = 255)
+    private String service;
 /*
     @OneToMany(mappedBy = "name")
     private List<Facility> facilities;
@@ -97,5 +100,14 @@ public class Rooms {
 
     public void setSize(Size size) {
         this.size = size;
+    }
+
+   
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
     }
 }

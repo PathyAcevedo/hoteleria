@@ -41,6 +41,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 // Asignar permisos a las URL de acuerdo a los roles
                 .antMatchers("/users/**").hasAnyAuthority("ROL_ADMINISTRADOR")
+                .antMatchers("/client/**").hasAnyAuthority("ROL_EMPLEADO")
                 //.antMatchers("/category/**").hasAnyAuthority("ROL_ADMINISTRADOR")
                 //.antMatchers("/requests/**").hasAnyAuthority("ROL_ENLACE")
                 //.antMatchers("/suburb/**").hasAnyAuthority("ROL_ENLACE")

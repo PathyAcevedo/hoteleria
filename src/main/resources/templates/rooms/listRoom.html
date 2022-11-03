@@ -27,7 +27,7 @@
 
 <div class="row" style="margin-left: 10%;margin-right: 10%;">
 
-    <div class="col-md-6"><h5 >LISTA DE HABITACIONES</h5></div>
+    <div class="col-md-6"><h5 class="text" >LISTA DE HABITACIONES</h5></div>
     <div class="col-md-6">
         <a class="btn-agregar float-right text-end " th:href="@{/rooms/create}">
             <span class="icon-agregar">
@@ -59,6 +59,14 @@
                  <li><ion-icon name="checkbox-outline"></ion-icon><span>[[${roomObj.description}]]</span></li>
                      <li><ion-icon name="checkbox-outline"></ion-icon><span>[[${roomObj.size.name}]]</span></li>
                  </ul>
+                 <hr>
+                 <span>Servicios especiales:</span>
+                 <ul>
+                    
+                    <li><p>[[${roomObj.service}]]</p></li>
+
+        
+                    </ul>
              </div>
             <div  class="button-get-plan " style="bottom: initial">
                 <a th:href="@{/rooms/details/{id} (id=${roomObj.id})}" class="btn-see">

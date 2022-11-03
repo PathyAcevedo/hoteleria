@@ -327,7 +327,7 @@
 /*Image*/
 .card-avatar {
     --size: 80px;
-    background: linear-gradient(to top, #f1e1c1 0%, #ffeba7 100%);
+    background-image: linear-gradient(to top, #f1e1c1 0%, #ffeba7 100%) ;
     width: var(--size);
     height: var(--size);
     border-radius: 50%;
@@ -404,13 +404,13 @@
     position: absolute;
     left: 15px;
     color: #e8e8e8;
-    pointer-events: none;
-    transform: translateY(1rem);
+
     transition: 150ms cubic-bezier(0.4,0,0.2,1);
 }
 
 .input-up:focus, input-up:valid {
     outline: none;
+ 
     border: 1.5px solid #ffeba7;
 }
 .input-option-up{
@@ -418,6 +418,7 @@
     color: #ffeba7 ;
     outline: none;
     border: 1.5px solid #ffeba7;
+    
     border-radius: 20%;
 }
 .input-option-up:active{
@@ -427,6 +428,7 @@
 .input-up:focus ~ label, input-up:valid ~ label {
     transform: translateY(-50%) scale(0.8);
     background-color: #394062;
+
     padding: 0 .2em;
     color: #ffeba7;
 }
@@ -571,29 +573,21 @@
 /* INICIO CHECKBOX */
 
 
-input[type='checkbox'] {
-    position: absolute;
-    transform: scale(0);
-}
-
-input[type='checkbox']:checked ~ .checkbox {
-    transform: rotate(45deg);
-    width: 14px;
-    margin-left: 5px;
-    border-color: #ffeba7;
-    border-width: 5px;
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-radius: 0;
-}
-
-.checkbox {
-    display: block;
-    width: inherit;
-    height: inherit;
-    border: solid 3px lightgrey;
-    border-radius: 6px;
-    transition: all 0.375s;
-}
-
 /* FIN CHECKBOX */
+
+/*titulos*/
+.text{
+    font-family: 'Baloo Tamma', cursive;
+    text-align: left;
+    width: 100%;
+    margin: 0px auto;
+
+    font-size: 40px;
+    letter-spacing: 5px;
+    top: 50%;
+    position: absolute;
+    margin-top: -40px;
+    text-shadow: -1px -1px 0px blue,
+      3px 3px 0px blue,
+      6px 6px 0px blue-900;
+  }

@@ -93,23 +93,66 @@
                             </div>
 
                         </div>
-
-                        <label style="display: block; width: 20px; height: 20px; cursor: pointer;">
-                            <input checked="" type="checkbox" >
-                            <span class="checkbox"></span>
-                        </label>
-                        <label style="display: block; width: 20px; height: 20px; cursor: pointer;">
-                            <input checked="" type="checkbox" >
-                            <span class="checkbox"></span>
-                        </label>
-                        <label style="display: block; width: 20px; height: 20px; cursor: pointer;">
-                            <input checked="" type="checkbox" >
-                            <span class="checkbox"></span>
-                        </label>
-
+                        <div class="row">
+                            <div class="col-6">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Zona de entrenamiento"  th:field="*{service}">
+                            <label class="form-check-label" for="inlineCheckbox2" style="color:white;">
+                                Zona de entrenamiento
+                            </label>
+                           
+                          </div>
+                          </div>
+                        <br>
+                        <div class="col-6">
+                          <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Aparatos de gimnasia indiviales"  th:field="*{service}">
+                            <label class="form-check-label" for="inlineCheckbox2" style="color:white;">
+                                Aparatos de gimnasia indiviales
+                            </label>
+                          </div>
+                          
+                          </div>
+                          </div> 
+                          <div class="col-6">
+                            <div class="form-check ">
+                             
+                              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Alquiler de salas para conferencias"  th:field="*{service}">
+                              <label class="form-check-label" for="inlineCheckbox2" style="color:white;">
+                                Alquiler de salas para conferencias
+                              </label>
+                            </div>
+                            
+                            </div>
+                            </div> 
+                            <!-----sf-->
+                            <div class="row">
+                                <div class="col-6">
+                            <div class="form-check ">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Alberca con jardín"  th:field="*{service}" >
+                                <label class="form-check-label" for="inlineCheckbox2" style="color:white;">
+                                    Alberca con jardín
+                                </label>
+                               
+                              </div>
+                              </div>
+                            <br>
+                            <div class="col-6">
+                              <div class="form-check ">
+                               
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox5"  value="Alquiler de autos"  th:field="*{service}">
+                                <label class="form-check-label" for="inlineCheckbox2" style="color:white;">
+                                    Alquiler de autos
+                                </label>
+                              </div>
+                              
+                              </div>
+                              </div> 
+                           
+                              
 
                     </div>
-
+                    <br>
                     <a th:href="@{/rooms/list}" class="button-cancel float-left" data-bs-dismiss="modal">
                         <ion-icon name="arrow-back-outline"></ion-icon>Cancelar </a>
 
