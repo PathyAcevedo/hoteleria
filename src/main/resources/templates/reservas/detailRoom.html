@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--Toast-->
+    <link rel="stylesheet" th:href="@{/css/toast.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="background-color:#c1c1c1">
+<div class="col-12" style="padding-left: 0px; padding-right: 0px;"
+     th:insert="/fragments/header.html "></div>
+<br>
+
+
+<div class="row" style="margin-left: 5%;margin-right: 5%; margin-bottom: 2%;">
+
+    <div class="col-md-6 "><h5  style="color: #5e6681; font-size: 40px;">Información de la habitación</h5></div>
+    <div class="col-md-6">
+        <a class="btn-agregar float-right text-end " th:href="@{/rooms/update/{id}(id=${room.id})}">
+            <span class="icon-agregar">
+                <ion-icon name="create" width="60" height="40">
+                    <rect width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="60" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                    <rect y="90" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
+                </ion-icon>
+            </span>
+            <span class="text-agregar">Editar</span>
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="grey-bg container-fluid">
+
+    <section id="stats-subtitle">
+
+        <div class="row">
+            <div class="col-xl-6 col-md-12">
+
+                <div class="overflow-hidden" style="background-color: #5e6681; color: #ffeba7;"  >
+                    <div class="card-content">
+                        <div class="card-body cleartfix">
+                            <div class="media align-items-stretch">
+                                <div class="align-self-center">
+                                    <i class="icon-pencil primary font-large-2 mr-2"></i>
+                                </div>
+                                <div class="media-body">
+
+                                    <span>[[${room.name}]]</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body cleartfix">
+                            <div class="media align-items-stretch">
+                                <div class="align-self-center">
+                                    <i class="icon-speech warning font-large-2 mr-2"></i>
+                                </div>
+                                <div class="media-body">
+                                    <h4>Descripcion</h4>
+                                    <span>[[${room.description}]]</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-6 col-md-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body cleartfix">
+                            <div class="media align-items-stretch">
+                                <div class="align-self-center">
+                                    <h1 class="mr-2">$ [[${room.price}]]</h1>
+                                </div>
+                                <div class="media-body">
+                                    <h4>Metodo de pago</h4>
+                                    <span>Efectivo/Tarejta</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-wallet success font-large-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-md-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body cleartfix">
+                            <div class="media align-items-stretch">
+                                <div class="align-self-center">
+                                    <h1 class="mr-2">$ [[${room.price}]]</h1>
+                                </div>
+                                <div class="media-body">
+                                    <h4>Sueldo máximo</h4>
+                                    <span>Efectivo/Tarjeta</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-wallet success font-large-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="minimal-statistics">
+
+        <div class="row">
+
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="icon-speech warning font-large-2 float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <div class="row">
+
+                                        <h3 class="col-6">Categoria:</h3>
+                                        <h3 class="col-6">[[${room.category.name}]]</h3>
+                                    </div >
+                                    <span>[[${room.category.description}]]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="icon-graph success font-large-2 float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <div class="row">
+
+                                        <h3 class="col-6">Tamaño:</h3>
+                                        <h3 class="col-6">[[${room.size.name}]]</h3>
+                                    </div >
+                                    <span>[[${room.size.description}]]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-4 col-sm-6 col-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="warning">Estatus</h3>
+                                    <span>[[${room.enabled}]]</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="danger">Fecha de inicio</h3>
+                                    <span>31-12-2022</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-rocket danger font-large-2 float-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card" style="background-color: #5e6681; color: #ffeba7;">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="media-body text-left">
+                                    <h3 class="success">Fecha de vigencia</h3>
+                                    <span>31-12-2023</span>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="icon-user success font-large-2 float-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+<!--Ionicons-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!--Toast-->
+<script th:src="@{/js/toast.min.js}"></script>
+
+<script>
+    new Toast({
+        message: 'This is a danger message. You can use this for errors etc',
+        type: 'success'
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
