@@ -68,12 +68,30 @@
         
                     </ul>
              </div>
+            <div>
+                <td  th:switch="${roomObj.status}">
+
+                    <div th:case="'1'">
+                        <small class="text-muted"><span
+                                class="badge badge-pill badge-success">Disponible</span></small>
+                    </div>
+                    <div th:case="'2'">
+                        <small class="text-muted"><span
+                                class="badge badge-pill badge-primary">Reservada</span></small>
+                    </div>
+                    <div th:case="'3'">
+                        <small class="text-muted"><span
+                                class="badge badge-pill badge-danger">Mantenimiento</span></small>
+                    </div></td>
+            </div>
             <div  class="button-get-plan " style="bottom: initial">
                 <a th:href="@{/rooms/details/{id} (id=${roomObj.id})}" class="btn-see">
                     <ion-icon name="flame"></ion-icon>
                     <span>Reservar</span>
                 </a>
             </div>
+
+
         </div>
 
     </div>

@@ -28,6 +28,9 @@ public class Rooms {
     @Column(name = "price", nullable = false)
     private double price;
 
+    @Column(name = "status", nullable = false)
+    private int status;
+
 
     @Column(name = "enabled", nullable = false)
     private int enabled;
@@ -45,6 +48,14 @@ public class Rooms {
     @ManyToOne
     @JoinColumn(name = "size", nullable = false)
     private Size size;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public Long getId() {
         return id;
